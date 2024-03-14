@@ -31,7 +31,7 @@ list_of_folders = [
     "pyproject.toml",
     "tox.ini",
     "notebooks/experiment.ipynb",
-   "github/workflows/.gitkeep"
+   ".github/workflows/.gitkeep"
 ]
 
 
