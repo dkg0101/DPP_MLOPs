@@ -3,6 +3,7 @@ from exception import CustomException
 from components.data_ingestion import DataIngestion
 from components.data_transformation import DataTransformation
 from components.model_trainer import ModelTrainer
+from components.model_evaluation import ModelEvaluation
 import pandas as pd
 import os,sys
 
@@ -19,3 +20,6 @@ train_arr,test_arr = data_transformation_obj.initialize_data_transformation(trai
 
 model_trainer_obj = ModelTrainer()
 model_trainer_obj.initate_model_training(train_array=train_arr,test_array=test_arr)
+model_eval_obj  = ModelEvaluation()
+model_eval_obj.initiate_model_evaluation(train_array=train_arr,test_array=test_arr)
+
