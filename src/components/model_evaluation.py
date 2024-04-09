@@ -28,12 +28,12 @@ class ModelEvaluation:
             model = load_object(model_path)
 
             #set unified resource identifier
+            # Set the MLflow tracking URI
+            mlflow.set_tracking_uri("https://dagshub.com/dkg0101/DPP_MLOPs.mlflow")
 
-            # mlflow.set_registry_uri("")
-
-
+            # Optionally, set the registry URI if it's different or just for clarity
+            mlflow.set_registry_uri("https://dagshub.com/dkg0101/DPP_MLOPs.mlflow")
             tracking_url_type_store=urlparse(mlflow.get_tracking_uri()).scheme
-
             print(tracking_url_type_store)
 
 
@@ -60,8 +60,9 @@ class ModelEvaluation:
                     mlflow.sklearn.log_model(model, "model")
 
 
-
         except Exception as e:
             raise CustomException(e,sys)
+
+
 
 
