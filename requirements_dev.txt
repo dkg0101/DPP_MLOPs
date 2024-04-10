@@ -8,6 +8,8 @@ dvc
 ipykernel
 xgboost
 dataclasses
+mysql-connector-python
+pymysql
 
 # dev requirements -
 
