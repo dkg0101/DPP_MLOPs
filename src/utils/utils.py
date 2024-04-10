@@ -4,7 +4,7 @@ import numpy as np
 from logger import logging
 from exception import CustomException
 from sklearn.metrics import r2_score
-
+import pymysql
 
 
 def save_object(filepath:str,object):
@@ -71,3 +71,31 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
         logging.info('Exception occured during model training')
         raise CustomException(e,sys)
     
+
+def read_sql_data():
+        try:
+            host = os.getenv('host')
+            user = os.getenv('root')
+            password = os.getenv('password')
+            db = os.getenv('db')
+
+            my_db=pymysql.connect(host=host,
+                            user=user,
+                            password=password,
+                            db=db)
+            
+            logging.info('Connection Established',my_db)
+
+            logging.info('Reading data from table')
+
+            df = pd.read_sql_query('select * from train',my_db)
+            print(df.head())
+
+            return df
+
+        except Exception as e:
+            logging.info('Exception occured during model training')
+            raise CustomException(e,sys)
+        
+
+
